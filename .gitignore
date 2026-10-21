@@ -1,0 +1,5 @@
+# Archivos compilados de Java
+*.class
+
+# Carpeta de configuraciones locales de VS Code
+.vscode/
