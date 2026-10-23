@@ -1,4 +1,4 @@
-package p115_SegundoExamenParcia;
+package p115_examensegundoparcial;
 
 /**
  * Punto de Entrada de la Aplicación.
