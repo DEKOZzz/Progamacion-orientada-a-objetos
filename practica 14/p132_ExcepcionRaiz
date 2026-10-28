@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+public class p132_ExcepcionRaiz {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean leido = false;
+
+        while (!leido) {
+            try {
+                System.out.print("Introduce un número: ");
+                float numero = scanner.nextFloat();
+                double raiz = Math.sqrt(numero);
+                System.out.printf("El resultado es: %.2f\n", raiz);
+                leido = true;
+            } catch (Exception e) {
+                System.out.println("Error no puedo calcular la raíz cuadrada");
+                scanner.next(); // Limpiar el búfer del escáner en caso de error
+            }
+        }
+        scanner.close();
+    }
+}

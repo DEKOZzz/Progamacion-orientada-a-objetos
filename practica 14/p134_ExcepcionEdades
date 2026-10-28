@@ -1,0 +1,29 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class p134_ExcepcionEdades {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int[] edades = new int[5];
+        int i = 0;
+
+        System.out.println("# Captura las edades de 5 personas:");
+        while (i < 5) {
+            try {
+                System.out.print("Edad persona " + (i + 1) + ": ");
+                edades[i] = scanner.nextInt();
+                i++;
+            } catch (InputMismatchException e) {
+                System.out.println("Introduce un número entero");
+                scanner.next(); // Limpiar entrada inválida
+            }
+        }
+
+        System.out.println("# Captura terminada las edades son:");
+        for (int edad : edades) {
+            System.out.print(edad + " ");
+        }
+        System.out.println();
+        scanner.close();
+    }
+}

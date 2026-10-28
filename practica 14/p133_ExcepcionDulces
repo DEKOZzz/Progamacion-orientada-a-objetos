@@ -1,0 +1,33 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class p133_ExcepcionDulces {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean correcto = false;
+
+        while (!correcto) {
+            try {
+                System.out.print("Número de niños en el barrio: ");
+                int ninos = scanner.nextInt();
+
+                System.out.print("Cantidad de dulces existente: ");
+                int dulces = scanner.nextInt();
+
+                if (dulces == 0) {
+                    System.out.println("Si no hay dulces, no puedo repartir dulces");
+                } else {
+                    int resultado = dulces / ninos;
+                    System.out.println("A cada niño le tocan " + resultado + " dulces.");
+                }
+                correcto = true;
+            } catch (InputMismatchException e) {
+                System.out.println("Los niños y los dulces, deben ser cantidades numéricas");
+                scanner.next(); // Limpiar entrada inválida
+            } catch (ArithmeticException e) {
+                System.out.println("Si no hay dulces, no puedo repartir dulces");
+            }
+        }
+        scanner.close();
+    }
+}

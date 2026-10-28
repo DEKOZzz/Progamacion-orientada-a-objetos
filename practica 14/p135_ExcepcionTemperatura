@@ -1,0 +1,43 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+// Excepción personalizada requerida
+class TemperaturaExcesiva extends Exception {
+    public TemperaturaExcesiva(String mensaje) {
+        super(mensaje);
+    }
+}
+
+public class p135_ExcepcionTemperatura {
+
+    public static double convertirFahrenheit(double centigrados) throws TemperaturaExcesiva {
+        if (centigrados > 100) {
+            throw new TemperaturaExcesiva("Temperatura demasiado alta, no se puede convertir");
+        }
+        return (centigrados * 9.0 / 5.0) + 32;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean procesado = false;
+
+        while (!procesado) {
+            try {
+                System.out.print("Dame una temperatura en centigrados: ");
+                double centigrados = scanner.nextDouble();
+
+                double fahrenheit = convertirFahrenheit(centigrados);
+                System.out.printf("%.2f grados centigrados, equivale a %.2f grados farenheit\n", centigrados, fahrenheit);
+                procesado = true;
+
+            } catch (InputMismatchException e) {
+                System.out.println("La temperatura a convertir, debe ser un valor numérico");
+                scanner.next(); // Limpiar entrada incorrecta
+            } catch (TemperaturaExcesiva e) {
+                System.out.println("Error: p135_ExcepcionTemperatura. Temperatura Excesiva: " + e.getMessage());
+                // Se mantiene en false para permitir reintentar tal como indica el flujo esperado
+            }
+        }
+        scanner.close();
+    }
+}
